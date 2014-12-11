@@ -7,7 +7,7 @@
         <table>
 <?php
 
-query_posts('posts_per_page=10');
+query_posts('posts_per_page=25');
 if ( have_posts() ) {
     while ( have_posts() ) {
         the_post(); ?>
