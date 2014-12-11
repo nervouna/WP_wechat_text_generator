@@ -1,5 +1,5 @@
 <div class="wrap">
-    <h2>请在这里选择需要转换的文章。</h2>
+    <h2>微信公众号文章格式转换器</h2>
     <hr>
     <div  style="width: 40%;float:left;min-width: 300px;">
     <form action="" method="post">

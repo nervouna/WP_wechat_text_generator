@@ -15,10 +15,10 @@
  *
  */
 
-add_action('admin_menu', 'my_plugin_menu');
+add_action( 'admin_menu', 'my_plugin_menu' );
 
 function my_plugin_menu() {
-    add_management_page('微信文章生成器', '微信文章', 'manage_options', 'wechat_text_generator', 'wechat_show_options');
+    add_management_page( '微信文章生成器', '微信文章', 'manage_options', 'wechat_text_generator', 'wechat_show_options' );
 }
 
 function wechat_show_options() {
