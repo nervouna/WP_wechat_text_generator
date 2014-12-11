@@ -1,4 +1,8 @@
-<div id="wechat-post" class="wechat-post" style="background-color: transparent; width: 50%; margin: 0 auto; float: left;">
+<div style="background-color: transparent; width: 50%; margin: 0 auto; float: left;">
+    <?php if ( count( $_POST ) ): ?>
+    <h3>文章预览</h3>
+    <?php endif ?>
+<div id="wechat-post" class="wechat-post" style="background-color: transparent; width: 100%; margin: 0 auto; float: left;">
 
 <?php
 
@@ -13,17 +17,17 @@ if ( count( $_POST ) > 0 ) {
         // If have video, prints video url
         $wechat_post_meta = get_post_meta( $wechat_post_id );
         if ( array_key_exists( "wpcf-qq_video", $wechat_post_meta ) ) {
-            echo "<span style=\"background:transparent;\">".$wechat_post_meta["wpcf-qq_video"][0]."</span>";
+            echo "<p><code style=\"background:transparent;\">".$wechat_post_meta["wpcf-qq_video"][0]."</code></p>";
         }
 
         // Featured Image
         $wechat_post_thumbnails = get_the_post_thumbnail( $wechat_post_id );
-        echo "<p style=\"text-align:center\">".get_the_post_thumbnail( $wechat_post_id )."</p>";
+        echo "<p style=\"background: transparent; text-align:center\">".get_the_post_thumbnail( $wechat_post_id )."</p>";
 
         // Split post content into lines and wrap each with <p>
         $wechat_post_content = explode( "\n", $wechat_post->post_content );
         foreach ( $wechat_post_content as $line ) {
-            if ( !ctype_space( $line ) and $line != "" ) {
+            if ( !ctype_space( $line ) and !empty($line) ) {
                 echo "<p style=\"background: transparent; color: #333; font-size: 16px;\">" . $line . "</p>";
             }
         }
@@ -78,3 +82,4 @@ if ( count( $_POST ) > 0 ) {
 </script>
 </div>
 
+</div>
