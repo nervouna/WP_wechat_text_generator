@@ -6,13 +6,12 @@
     <form action="" method="post">
         <table>
 <?php
-
 query_posts('posts_per_page=25');
 if ( have_posts() ) {
     while ( have_posts() ) {
         the_post(); ?>
             <tr>
-                <td><input name=<?php the_ID() ?> value=<?php the_ID(); ?> type="checkbox"></input></td>
+                <td><input name=<?php the_ID() ?> value=<?php the_ID(); ?> type="checkbox"/></td>
                 <td style="text-align:right;"><span style="font-weight:bold;">#<?php the_ID(); ?></span></td>
                 <td><?php the_title(); ?></td>
             </tr>
