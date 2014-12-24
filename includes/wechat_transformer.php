@@ -37,12 +37,18 @@
             // Images
             var images = document.getElementsByClassName('attachment-post-thumbnail wp-post-image');
             for (var i=images.length-1; i>=0; i--) {
+
+                // Styles
                 images[i].style.background = "transparent";
                 images[i].style.border = "1px solid rgba(0, 0, 0, 0.1)";
                 images[i].removeAttribute('width');
                 images[i].removeAttribute('height');
                 images[i].style.width = "100%";
                 images[i].style.height = "auto";
+
+                // Qiniu CDN
+                var fastImg = images[i].src.replace('<?php bloginfo('wpurl') ?>', 'http://nervouna.qiniudn.com');
+                images[i].setAttribute('src', fastImg);
             }
             for (var i=images.length-1; i>=0; i--) {
                 images[i].removeAttribute('class');
