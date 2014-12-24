@@ -50,7 +50,7 @@ EOD;
     $wechat_item_text = '';
     foreach ( $wechat_item_content as $line ) {
         // Holy shit
-        if ( !empty( trim( $line ) ) ) {
+        if ( trim( $line ) ) {
             $wechat_item_text .= '<p>' . $line . '</p>';
         }
     }
