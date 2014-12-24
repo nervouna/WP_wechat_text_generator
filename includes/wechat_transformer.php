@@ -3,9 +3,11 @@
     <div style="background-color: transparent; width: 50%; margin: 0 auto; float: left;">
         <h3>文章预览</h3>
         <div id="wechat-post" class="wechat-post" style="background-color: transparent; width: 100%; margin: 0 auto; float: left;">
-            <fieldset style="white-space: normal; border: 0px; box-sizing: border-box; width: 100%; clear: both; padding: 0px; margin-bottom: 40px">
-              <img src="https://mmbiz.qlogo.cn/mmbiz/kEuN69VnaeJuXx1WLXALrjyLHd72oZhsw6riaJSCeyXrGW7Uk0ibqlPdL9Tnnn7qpdXqqvzXqNMSVbArAgvic7iaOw/0" style="width: 100%; height: auto !important; box-sizing: border-box;"/>
-            </fieldset>
+            <img src="https://mmbiz.qlogo.cn/mmbiz/kEuN69VnaeJuXx1WLXALrjyLHd72oZhsw6riaJSCeyXrGW7Uk0ibqlPdL9Tnnn7qpdXqqvzXqNMSVbArAgvic7iaOw/0" style="width: 100%; height: auto !important; box-sizing: border-box;"/>
+            <br/>
+            <p>Hello!</p>
+            <p>在这里开始说话。</p>
+            <br/>
             <?php
             $order = 1;
             foreach ( $_POST as $wechat_item_id ) {
@@ -13,13 +15,16 @@
                 $order++;
             }
             ?>
-            <fieldset style="white-space: normal; border: 0px; margin: 3em 1em; padding: 0px; box-sizing: border-box;">
+            <br/>
+            <br/>
+            <br/>
+            <fieldset style="white-space: normal; border: 0px; margin: 1em; padding: 0px; box-sizing: border-box;">
                  <section style="margin-left: 1em; line-height: 1.4; box-sizing: border-box;">
                     <span style="padding: 3px 8px; border-radius: 4px; color: rgb(255, 255, 255); font-size: 1em; text-align: center; font-family: inherit; font-weight: inherit; text-decoration-line: inherit; text-decoration-style: inherit; text-decoration-color: inherit; border-color: rgb(95, 156, 239); box-sizing: border-box; background-color: rgb(95, 156, 239);">联系好棒</span>
                 </section>
                 <section style="margin-top: -11px; padding: 22px 16px 16px; border: 1px solid rgb(192, 200, 209); color: rgb(51, 51, 51); font-size: 1em; font-family: inherit; font-weight: inherit; text-align: inherit; text-decoration-line: inherit; text-decoration-style: inherit; text-decoration-color: inherit; box-sizing: border-box; background-color: rgb(239, 239, 239);">
                     <p>如果你发现了好玩的新产品，欢迎以各种方式发给好棒君。可以发链接或截图，直接发一个搜索的关键词也没问题。</p>
-                    <p>如果想调戏好棒君，那么请加我的微信号：haobangjun~</p>
+                    <p>如果想和真人聊天，请回复<span style="font-weight: bold; background-color: yellow;">调戏好棒君</span>……</p>
                 </section>
             </fieldset>
         </div>
@@ -47,8 +52,13 @@
                 images[i].style.height = "auto";
 
                 // Qiniu CDN
+                <?php if ( !WP_DEBUG ): ?>
                 var fastImg = images[i].src.replace('<?php bloginfo('wpurl') ?>', 'http://nervouna.qiniudn.com');
                 images[i].setAttribute('src', fastImg);
+                <?php else: ?>
+                var debugImg = 'http://nervouna.qiniudn.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-17-at-17.27.55.png'
+                images[i].setAttribute('src', debugImg);
+                <?php endif ?>
             }
             for (var i=images.length-1; i>=0; i--) {
                 images[i].removeAttribute('class');

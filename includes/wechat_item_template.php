@@ -1,6 +1,16 @@
 <?php
 /**
  * @param $wechat_item_id
+ * @param int $order
+ * @return string
+ */
+function generate_item_list( $wechat_item_id, $order=1 ) {
+    $wechat_item = get_post( $wechat_item_id );
+    $list_item = "$order\. $wechat_item->post_title<br />";
+    return $list_item;
+}
+/**
+ * @param $wechat_item_id
  * @param $order
  * @return $wechat_full_item
  */
@@ -22,11 +32,9 @@ function generate_item_html( $wechat_item_id, $order=1 ) {
         $order
       </section>
     </section>
-    <section style="margin-top: -1em; margin-bottom: 1em; box-sizing: border-box;">
-      <section style="border-top-width: 1px; border-top-style: solid; border-color: rgb(95, 156, 239); width: 40%; float: left; box-sizing: border-box;">
-      </section>
-      <section style="border-top-width: 1px; border-top-style: solid; border-color: rgb(95, 156, 239); width: 40%; float: right; box-sizing: border-box;">
-      </section>
+    <section style="margin-top: -1em; margin-bottom: 1em; box-sizing: border-box;" class="tn-Powered-by-XIUMI">
+      <section style="border-top-width: 1px; border-top-style: solid; border-color: rgb(95, 156, 239); width: 35%; float: left; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section>
+      <section style="border-top-width: 1px; border-top-style: solid; border-color: rgb(95, 156, 239); width: 35%; float: right; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section>
     </section>
   </section>
 </fieldset>
@@ -41,7 +49,10 @@ EOD;
 EOD;
     $wechat_item_text = '';
     foreach ( $wechat_item_content as $line ) {
-        $wechat_item_text .= '<p>' . $line . '</p>';
+        // Holy shit
+        if ( !empty( trim( $line ) ) ) {
+            $wechat_item_text .= '<p>' . $line . '</p>';
+        }
     }
     $wechat_item_footer = <<<EOD
 <p style="margin-top: 0px; margin-bottom: 0px; clear: both; color: inherit; font-family: inherit; font-size: 1em; font-weight: inherit; white-space: normal; text-decoration-style: inherit; text-decoration-color: inherit; text-align: justify; text-decoration-line: inherit; box-sizing: border-box;">
