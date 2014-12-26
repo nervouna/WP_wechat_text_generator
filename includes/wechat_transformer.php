@@ -1,6 +1,6 @@
 <?php if ( count( $_POST ) ): ?>
     <?php include WTG_INCPATH . '/wechat_item_template.php' ?>
-    <div style="background-color: transparent; width: 50%; max-width: 360px; margin: 0 auto; float: left;">
+    <div style="background-color: transparent; width: 50%; margin: 0 auto; float: left;">
         <h3>文章预览</h3>
         <div id="wechat-post" class="wechat-post" style="background-color: transparent; width: 100%; margin: 0 auto; float: left;">
             <img src="https://mmbiz.qlogo.cn/mmbiz/kEuN69VnaeJuXx1WLXALrjyLHd72oZhsw6riaJSCeyXrGW7Uk0ibqlPdL9Tnnn7qpdXqqvzXqNMSVbArAgvic7iaOw/0" style="width: 100%; height: auto !important; box-sizing: border-box;"/>
@@ -123,7 +123,6 @@
             RefineStyle();
         } ();
     </script>
-</div>
 </div>
 
 <?php endif ?>
