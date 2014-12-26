@@ -5,8 +5,10 @@
  * @return string
  */
 function generate_item_list( $wechat_item_id, $order=1 ) {
-    $wechat_item = get_post( $wechat_item_id );
-    $list_item = "$order\. $wechat_item->post_title<br />";
+    $wechat_item_title = get_post( $wechat_item_id )->post_title;
+    $list_item = <<<EOD
+$order. $wechat_item_title<br />
+EOD;
     return $list_item;
 }
 /**
@@ -20,6 +22,7 @@ function generate_item_html( $wechat_item_id, $order=1 ) {
     $wechat_item_title = $wechat_item->post_title;
     $wechat_item_video = get_post_meta( $wechat_item_id )["wpcf-qq_video"][0];
     $wechat_item_thumbnail = get_the_post_thumbnail( $wechat_item_id );
+    $wechat_item_product_id = get_post_meta( $wechat_item_id )["wpcf-wechat_id"][0];
     $wechat_item_content = explode( "\n", $wechat_item->post_content );
 
     // Templates
@@ -42,11 +45,6 @@ function generate_item_html( $wechat_item_id, $order=1 ) {
   <h2 style="font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration-line: inherit; text-decoration-style: inherit; text-decoration-color: inherit; color: inherit; box-sizing: border-box;">$wechat_item_title</h2>
 </blockquote>
 EOD;
-    $wechat_item_featured_image = <<<EOD
-<fieldset style="white-space: normal; border: 0px; box-sizing: border-box; width: 100%; clear: both; padding: 0px; text-align: center;">
-  $wechat_item_thumbnail
-</fieldset>
-EOD;
     $wechat_item_text = '';
     foreach ( $wechat_item_content as $line ) {
         // Holy shit
@@ -56,17 +54,14 @@ EOD;
     }
     $wechat_item_footer = <<<EOD
 <p style="margin-top: 0px; margin-bottom: 0px; clear: both; color: inherit; font-family: inherit; font-size: 1em; font-weight: inherit; white-space: normal; text-decoration-style: inherit; text-decoration-color: inherit; text-align: justify; text-decoration-line: inherit; box-sizing: border-box;">
-  回复&nbsp;<span style="background-color: rgb(255, 255, 0);"><strong>$wechat_item_id</strong></span>&nbsp;可以获取直达链接
+  回复&nbsp;<span style="background-color: rgb(255, 255, 0);"><strong>$wechat_item_product_id</strong></span>&nbsp;可以获取直达链接
 </p>
 </div>
 EOD;
     if ( !empty( $wechat_item_video ) ) {
         $wechat_item_footer .= "<p>" . $wechat_item_video . "</p>";
     }
-    $wechat_full_item = $wechat_item_header .
-        $wechat_item_featured_image .
-        $wechat_item_text .
-        $wechat_item_footer;
-    return $wechat_full_item;
+    $wechat_item_html = $wechat_item_header . $wechat_item_thumbnail . $wechat_item_text . $wechat_item_footer;
+    return $wechat_item_html;
 }
 ?>
