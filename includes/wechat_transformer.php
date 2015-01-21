@@ -41,7 +41,7 @@
             <br/>
             <br/>
             <br/>
-            <fieldset style="white-space: normal; border: 0px; margin: 16px; padding: 0px; box-sizing: border-box;">
+            <fieldset style="white-space: normal; border: 0px; margin: 16px; padding: 0px; box-sizing: border-box; background-color: transparent">
                  <section style="margin-left: 16px; line-height: 1.4; box-sizing: border-box;">
                     <span style="padding: 3px 8px; border-radius: 4px; color: rgb(255, 255, 255); font-size: 16px; text-align: center; font-family: inherit; font-weight: inherit; text-decoration-line: inherit; text-decoration-style: inherit; text-decoration-color: inherit; border-color: rgb(95, 156, 239); box-sizing: border-box; background-color: rgb(95, 156, 239);">联系好棒</span>
                 </section>
