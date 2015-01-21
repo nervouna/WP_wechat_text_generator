@@ -6,9 +6,7 @@
  */
 function generate_item_list( $wechat_item_id, $order=1 ) {
     $wechat_item_title = get_post( $wechat_item_id )->post_title;
-    $list_item = <<<EOD
-$order. $wechat_item_title<br />
-EOD;
+    $list_item = "$order. $wechat_item_title <br />";
     return $list_item;
 }
 /**
@@ -28,22 +26,22 @@ function generate_item_html( $wechat_item_id, $order=1 ) {
     // Templates
     $wechat_item_header = <<<EOD
 <div class="item" id="item-$wechat_item_id">
-<fieldset style="white-space: normal; border: 0px; margin: 1em 0px 2em; clear: both; box-sizing: border-box; padding: 0px;">
-  <section style="text-align: center; font-size: 1em; font-family: inherit; font-weight: inherit; text-decoration-line: inherit; text-decoration-style: inherit; text-decoration-color: inherit; color: rgb(255, 255, 255); border-color: rgb(95, 156, 239); box-sizing: border-box;">
-    <section style="width: 2em; height: 2em; margin: 0px auto; border-radius: 50%; box-sizing: border-box; background-color: rgb(95, 156, 239);">
-      <section style="display: inline-block; padding: 0px 0.5em; font-size: 1em; line-height: 2; font-family: inherit; box-sizing: border-box;">
-        $order
+  <fieldset style="border: 0px; margin: 0.8em 0px 0.5em; box-sizing: border-box; padding: 0px;">
+    <section style="display: inline-block; padding: 0px 2px 2px; box-sizing: border-box; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(95, 156, 239); line-height: 1; font-size: 16px; font-family: inherit; font-weight: inherit; text-align: center; text-decoration: inherit; color: rgb(255, 255, 255);">
+      <section style="display: inline-block; margin: 0px; padding: 0.3em 0.4em; min-width: 1.8em; min-height: 1.6em; border-radius: 80% 100% 90% 20%; line-height: 1; font-size: 16px; font-family: inherit; box-sizing: border-box; word-wrap: break-word !important; background-color: rgb(95, 156, 239);">
+        <section style="box-sizing: border-box;">
+          $order
+        </section>
       </section>
+      <span style="display: inline-block; margin-left: 0.4em; max-width: 100%; color: rgb(0, 112, 192); line-height: 1.4; font-size: 16px; word-wrap: break-word !important; box-sizing: border-box;">
+      <span style="max-width: 100%; font-size: 16px; font-family: inherit; font-weight: bolder; text-align: inherit; text-decoration: inherit; color: rgb(95, 156, 239); box-sizing: border-box; word-wrap: break-word !important;">
+      <section style="box-sizing: border-box;">
+        $wechat_item_title
+      </section>
+      </span>
+      </span>
     </section>
-    <section style="margin-top: -1em; margin-bottom: 1em; box-sizing: border-box;" class="tn-Powered-by-XIUMI">
-      <section style="border-top-width: 1px; border-top-style: solid; border-color: rgb(95, 156, 239); width: 35%; float: left; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section>
-      <section style="border-top-width: 1px; border-top-style: solid; border-color: rgb(95, 156, 239); width: 35%; float: right; box-sizing: border-box;" class="tn-Powered-by-XIUMI"></section>
-    </section>
-  </section>
-</fieldset>
-<blockquote style="margin: 0.5em 0px 0.3em; padding: 0px; border: none; font-family: inherit; white-space: normal; box-sizing: border-box; font-size: 1.5em; line-height: 1.5em;">
-  <h2 style="font-size: 1em; font-family: inherit; font-weight: inherit; text-align: center; text-decoration-line: inherit; text-decoration-style: inherit; text-decoration-color: inherit; color: inherit; box-sizing: border-box;">$wechat_item_title</h2>
-</blockquote>
+  </fieldset>
 EOD;
     $wechat_item_text = '';
     foreach ( $wechat_item_content as $line ) {
@@ -53,9 +51,9 @@ EOD;
         }
     }
     $wechat_item_footer = <<<EOD
-<p style="margin-top: 0px; margin-bottom: 0px; clear: both; color: inherit; font-family: inherit; font-size: 1em; font-weight: inherit; white-space: normal; text-decoration-style: inherit; text-decoration-color: inherit; text-align: justify; text-decoration-line: inherit; box-sizing: border-box;">
-  回复&nbsp;<span style="background-color: rgb(255, 255, 0);"><strong>$wechat_item_product_id</strong></span>&nbsp;可以获取直达链接
-</p>
+  <p style="margin-top: 0px; margin-bottom: 0px; clear: both; color: inherit; font-family: inherit; font-size: 16px; font-weight: inherit; white-space: normal; text-decoration-style: inherit; text-decoration-color: inherit; text-align: justify; text-decoration-line: inherit; box-sizing: border-box;">
+    回复&nbsp;<span style="background-color: rgb(255, 255, 0);"><strong>$wechat_item_product_id</strong></span>&nbsp;可以获取直达链接
+  </p>
 </div>
 EOD;
     if ( !empty( $wechat_item_video ) ) {
