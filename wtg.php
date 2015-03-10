@@ -3,7 +3,7 @@
  * Plugin Name: 微信公众号文章生成器
  * Plugin URI: http://blog.guanxiaoyu.com
  * Description: 将 WordPress 的文章页面组合成好棒所需的文章样式.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: 关小羽
  * Author URI: http://blog.guanxiaoyu.com/about-me
  * License: WTFPL
