@@ -1,28 +1,43 @@
 <div class="wrap">
-    <h2>微信公众号文章格式转换器</h2>
-    <hr>
-    <div  style="width: 40%;float:left;min-width: 300px;">
-        <h3>文章列表</h3>
+  <h2>微信公众号文章格式转换器</h2>
+  <hr>
+  <div  style="width: 40%;float:left;min-width: 300px;">
+    <h3>在这里输入文章 ID</h3>
     <form action="" method="post">
-        <table>
-<?php
-query_posts('posts_per_page=25');
-if ( have_posts() ) {
-    while ( have_posts() ) {
-        the_post(); ?>
-            <tr>
-                <td><input name=<?php the_ID() ?> value=<?php the_ID(); ?> type="checkbox"/></td>
-                <td style="text-align:right;"><span style="font-weight:bold;">#<?php the_ID(); ?></span></td>
-                <td><?php the_title(); ?></td>
-            </tr>
-
-    <?php }
-}
-wp_reset_query();
-?>
-</table>
-    <p class="submit">
+      <table id="postSelector">
+        <tr>
+          <td><input placeholder="文章ID" name="posts[]" type="text" /></td>
+        </tr>
+        <tr>
+          <td><input placeholder="文章ID" name="posts[]" type="text" /></td>
+        </tr>
+        <tr>
+          <td><input placeholder="文章ID" name="posts[]" type="text" /></td>
+        </tr>
+        <tr>
+          <td><input placeholder="文章ID" name="posts[]" type="text" /></td>
+        </tr>
+        <tr>
+          <td><input placeholder="文章ID" name="posts[]" type="text" /></td>
+        </tr>
+      </table>
+      <p class="submit">
+        <input type=button class="button button-default" onclick=OneMorePost() value="再加一条">
         <input type=submit class="button button-primary" value="提交" />
-    </p>
+      </p>
     </form>
-</div>
+  </div>
+  <script type="text/javascript">
+  function OneMorePost () {
+    var formTable = document.getElementById('postSelector');
+    var myTr = document.createElement('tr');
+    var myTd = document.createElement('td');
+    var myInput = document.createElement('input');
+    myInput.setAttribute('name', 'posts[]');
+    myInput.setAttribute('type', 'text');
+    myInput.setAttribute('placeholder', '文章ID')
+    myTd.appendChild(myInput);
+    myTr.appendChild(myTd);
+    formTable.appendChild(myTr);
+  }
+  </script>
